@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
+<title>YASSER TECH SOLUTIONS | CYBER FUTURE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg:#050816;
+  --panel:rgba(15,23,52,.75);
+  --blue:#00e5ff;
+  --purple:#a855f7;
+  --text:#eef7ff;
+  --muted:#91a4c5;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Poppins,sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+  radial-gradient(circle at 15% 20%,#082b5570,transparent 35%),
+  radial-gradient(circle at 85% 55%,#59127b50,transparent 35%),
+  linear-gradient(135deg,#050816,#090d20,#050816);
+}
+
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.13;
+  pointer-events:none;
+  background-image:
+  linear-gradient(#00e5ff20 1px,transparent 1px),
+  linear-gradient(90deg,#00e5ff20 1px,transparent 1px);
+  background-size:45px 45px;
+}
+
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#030611;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:.7s;
+}
+
+.loader-logo{
+  font-family:Orbitron;
+  font-size:clamp(35px,9vw,70px);
+  color:var(--blue);
+  text-shadow:0 0 20px var(--blue);
+  animation:pulse 1.5s infinite alternate;
+}
+
+.loader-text{
+  margin-top:15px;
+  color:#a855f7;
+  letter-spacing:5px;
+  font-size:11px;
+}
+
+.loader-line{
+  width:180px;
+  height:3px;
+  background:#18233d;
+  margin-top:25px;
+  overflow:hidden;
+}
+
+.loader-line:after{
+  content:"";
+  display:block;
+  height:100%;
+  width:40%;
+  background:var(--blue);
+  box-shadow:0 0 15px var(--blue);
+  animation:loading 1.2s infinite;
+}
+
+@keyframes loading{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(350%)}
+}
+
+@keyframes pulse{
+  from{opacity:.6}
+  to{opacity:1;text-shadow:0 0 35px var(--blue)}
+}
+
+#welcome{
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  background:radial-gradient(circle,#101c40,#030611 75%);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:25px;
+}
+
+.welcome-box{max-width:600px}
+
+.welcome-logo{
+  width:115px;height:115px;
+  margin:0 auto 25px;
+  border:2px solid var(--blue);
+  border-radius:30px;
+  display:grid;
+  place-items:center;
+  font-family:Orbitron;
+  font-size:35px;
+  color:var(--blue);
+  box-shadow:0 0 35px #00e5ff70,inset 0 0 25px #00e5ff25;
+  transform:rotate(-5deg);
+}
+
+.welcome-box h1{
+  font-family:Orbitron;
+  font-size:clamp(24px,6vw,43px);
+  margin-bottom:15px;
+}
+
+.welcome-box p{color:var(--muted);line-height:1.8}
+
+.enter-btn,.primary-btn{
+  display:inline-block;
+  margin-top:28px;
+  border:1px solid var(--blue);
+  color:var(--blue);
+  padding:13px 27px;
+  background:#00e5ff12;
+  border-radius:9px;
+  font-weight:700;
+  letter-spacing:2px;
+  transition:.3s;
+}
+
+.enter-btn:hover,.primary-btn:hover{
+  background:var(--blue);
+  color:#00101b;
+  box-shadow:0 0 25px var(--blue);
+  transform:translateY(-4px);
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:500;
+  background:#050816e8;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #00e5ff25;
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:17px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font-family:Orbitron;
+  color:var(--blue);
+  font-size:17px;
+  font-weight:800;
+  text-shadow:0 0 12px #00e5ff70;
+}
+
+.brand span{color:var(--purple)}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:#b9c7df;
+  font-size:12px;
+  transition:.3s;
+}
+
+.nav-links a:hover{color:var(--blue)}
+
+.menu-btn{
+  display:none;
+  color:var(--blue);
+  background:none;
+  border:1px solid #00e5ff50;
+  padding:7px 12px;
+  border-radius:7px;
+  font-size:20px;
+}
+
+.quick-nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:12px 10px;
+  overflow-x:auto;
+  background:#080e20;
+  border-bottom:1px solid #a855f720;
+}
+
+.quick-nav a{
+  white-space:nowrap;
+  font-size:10px;
+  letter-spacing:1px;
+  padding:8px 14px;
+  border:1px solid #283957;
+  border-radius:30px;
+  color:#a9bdd8;
+  transition:.3s;
+}
+
+.quick-nav a.active,.quick-nav a:hover{
+  color:var(--blue);
+  border-color:var(--blue);
+  background:#00e5ff12;
+  box-shadow:0 0 12px #00e5ff25;
+}
+
+.container{max-width:1150px;margin:auto;padding:0 5%}
+
+.hero{
+  min-height:85vh;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:40px;
+  padding-top:65px;
+  padding-bottom:65px;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #00e5ff40;
+  padding:8px 14px;
+  border-radius:30px;
+  color:var(--blue);
+  font-size:11px;
+  letter-spacing:1px;
+  background:#00e5ff0d;
+}
+
+.dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#00ff9d;
+  box-shadow:0 0 10px #00ff9d;
+}
+
+.hero h1{
+  font-family:Orbitron;
+  font-size:clamp(30px,5vw,58px);
+  line-height:1.3;
+  margin:25px 0 15px;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.9;
+  max-width:580px;
+  font-size:14px;
+}
+
+.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
+
+.secondary-btn{
+  display:inline-block;
+  margin-top:28px;
+  padding:13px 25px;
+  border:1px solid #a855f780;
+  color:#c78bff;
+  border-radius:9px;
+  font-size:12px;
+  transition:.3s;
+}
+
+.secondary-btn:hover{
+  background:#a855f7;
+  color:white;
+  box-shadow:0 0 20px #a855f760;
+}
+
+.hero-visual{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.profile-frame{
+  width:min(310px,75vw);
+  aspect-ratio:1;
+  border-radius:50%;
+  padding:9px;
+  border:2px solid var(--blue);
+  box-shadow:0 0 25px #00e5ff60,0 0 70px #a855f730;
+  position:relative;
+  animation:float 4s ease-in-out infinite;
+}
+
+.profile-frame:before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border:1px dashed var(--purple);
+  border-radius:50%;
+  animation:spin 15s linear infinite;
+}
+
+.profile-frame img{
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  background:#101c40;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-15px)}}
+
+.clock{
+  margin-top:25px;
+  color:var(--blue);
+  font-family:Orbitron;
+  font-size:12px;
+  line-height:2;
+}
+
+section{padding:85px 0;scroll-margin-top:130px}
+
+.section-title{text-align:center;margin-bottom:45px}
+
+.section-title small{
+  color:var(--blue);
+  letter-spacing:4px;
+  font-size:10px;
+}
+
+.section-title h2{
+  font-family:Orbitron;
+  font-size:clamp(23px,4vw,34px);
+  margin-top:12px;
+}
+
+.section-title h2 span{color:var(--purple)}
+
+.section-title p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:12px;
+}
+
+.glass{
+  background:var(--panel);
+  border:1px solid #00e5ff22;
+  backdrop-filter:blur(15px);
+  border-radius:17px;
+  box-shadow:0 10px 35px #0005;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:center;
+}
+
+.about-img{
+  width:100%;
+  max-height:350px;
+  object-fit:cover;
+  border-radius:15px;
+  border:1px solid #00e5ff50;
+}
+
+.about-card{padding:30px}
+.about-card h3{font-family:Orbitron;margin-bottom:15px;color:var(--blue)}
+.about-card p{color:var(--muted);font-size:13px;line-height:2}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+
+.stat{padding:22px;text-align:center}
+.stat h3{font-family:Orbitron;color:var(--blue);font-size:24px}
+.stat p{font-size:10px;color:var(--muted);margin-top:8px}
+
+.services-grid,.projects-grid,.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service-card,.project-card,.skill-card{
+  padding:24px;
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.service-card:hover,.project-card:hover,.skill-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--blue);
+  box-shadow:0 0 25px #00e5ff20;
+}
+
+.card-icon{
+  font-size:30px;
+  margin-bottom:17px;
+  display:block;
+}
+
+.service-card h3,.project-card h3,.skill-card h3{
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.service-card p,.project-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.project-tag{
+  display:inline-block;
+  color:var(--blue);
+  background:#00e5ff12;
+  padding:5px 9px;
+  font-size:9px;
+  border-radius:5px;
+  margin-bottom:13px;
+}
+
+.project-link{
+  display:inline-block;
+  margin-top:17px;
+  color:var(--blue);
+  font-size:11px;
+  border-bottom:1px solid var(--blue);
+  padding-bottom:4px;
+}
+
+.project-link:hover{color:white}
+
+.skill-bar{
+  height:6px;
+  background:#1a2743;
+  border-radius:10px;
+  margin-top:14px;
+  overflow:hidden;
+}
+
+.skill-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  border-radius:10px;
+}
+
+.owner-card{
+  max-width:650px;
+  margin:auto;
+  padding:35px;
+  text-align:center;
+}
+
+.owner-card img{
+  width:145px;height:145px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--blue);
+  box-shadow:0 0 25px #00e5ff60;
+  margin-bottom:20px;
+}
+
+.owner-card h3{font-family:Orbitron;color:var(--blue)}
+.owner-card p{color:var(--muted);font-size:13px;line-height:2;margin-top:12px}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.contact-item{
+  text-align:center;
+  padding:25px 15px;
+  transition:.3s;
+}
+
+.contact-item:hover{transform:translateY(-6px);border-color:var(--purple)}
+.contact-item .card-icon{font-size:27px}
+.contact-item h3{font-size:14px}
+.contact-item p{color:var(--muted);font-size:11px;margin:8px 0}
+.contact-item a{color:var(--blue);font-size:11px}
+
+footer{
+  padding:30px 15px;
+  text-align:center;
+  border-top:1px solid #00e5ff25;
+  background:#030611;
+}
+
+footer h3{font-family:Orbitron;color:var(--blue);font-size:15px}
+footer p{font-size:10px;color:var(--muted);margin-top:10px;line-height:2}
+
+.back-top{
+  position:fixed;
+  bottom:20px;
+  right:18px;
+  width:42px;height:42px;
+  border-radius:12px;
+  background:#00e5ff20;
+  color:var(--blue);
+  border:1px solid var(--blue);
+  display:grid;
+  place-items:center;
+  z-index:400;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.back-top.show{opacity:1;pointer-events:auto}
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.8s;
+}
+
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:800px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:65px;left:0;right:0;
+    background:#080e20;
+    padding:25px;
+    flex-direction:column;
+    border-bottom:1px solid #00e5ff30;
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:65px}
+  .hero p{margin:auto}
+  .hero-buttons{justify-content:center}
+  .hero-visual{grid-row:1}
+  .profile-frame{width:220px}
+  .about-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .services-grid,.projects-grid,.skills-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:480px){
+  .services-grid,.projects-grid,.skills-grid{grid-template-columns:1fr}
+  .section-title{margin-bottom:30px}
+  section{padding:65px 0}
+  .about-card{padding:22px}
+  .owner-card{padding:25px 18px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <div class="loader-logo">YTS</div>
+  <div class="loader-text">INITIALIZING CYBER SYSTEM</div>
+  <div class="loader-line"></div>
+</div>
+
+<div id="welcome">
+  <div class="welcome-box">
+    <div class="welcome-logo">YTS</div>
+    <h1>YASSER <span style="color:#00e5ff">TECH</span></h1>
+    <p>WELCOME TO THE DIGITAL FUTURE</p>
+    <p>Technology • Innovation • Digital Solutions</p>
+    <button class="enter-btn" onclick="enterSite()">ENTER WEBSITE →</button>
+  </div>
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="#home" class="brand">YASSER<span>TECH.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#services">SERVICES</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#owner">OWNER</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div class="quick-nav" id="quickNav">
+    <a href="#home" class="active">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#services">SERVICES</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#owner">OWNER</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</header>
+
+<main>
+<section class="hero container" id="home">
+  <div class="hero-content reveal">
+    <div class="status"><span class="dot"></span> DIGITAL SYSTEM ONLINE</div>
+    <h1>WELCOME TO<br><span>YASSER TECH</span><br>SOLUTIONS</h1>
+    <p>
+      Building the future through technology, creativity and innovation.
+      Explore our digital projects, services and technology solutions.
+    </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="primary-btn">EXPLORE PROJECTS ↗</a>
+      <a href="#contact" class="secondary-btn">CONTACT US</a>
+    </div>
+    <div class="clock">
+      <div id="clock">LOADING TIME...</div>
+      <div id="date"></div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="profile-frame">
+      <img src="https://files.catbox.moe/rr2oqm.jpg" alt="Yasser Tech Profile">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>01 // WHO WE ARE</small>
+      <h2>ABOUT <span>YTS</span></h2>
+      <p>Discover our digital identity</p>
+    </div>
+
+    <div class="about-grid reveal">
+      <img class="about-img" src="https://files.catbox.moe/rr2oqm.jpg" alt="Yasser Tech">
+      <div class="glass about-card">
+        <h3>YASSER TECH SOLUTIONS</h3>
+        <p>
+          Yasser Tech Solutions is a technology-focused brand dedicated
+          to digital innovation, web development and creative technology
+          solutions. We build digital tools and experiences designed
+          to make technology more accessible and useful.
+        </p>
+        <a href="#services" class="project-link">DISCOVER OUR SERVICES →</a>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="glass stat"><h3>04+</h3><p>LIVE PROJECTS</p></div>
+      <div class="glass stat"><h3>24/7</h3><p>DIGITAL ENERGY</p></div>
+      <div class="glass stat"><h3>YTS</h3><p>BRAND IDENTITY</p></div>
+      <div class="glass stat"><h3>∞</h3><p>CREATIVE IDEAS</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>02 // WHAT WE DO</small>
+      <h2>OUR <span>SERVICES</span></h2>
+      <p>Digital solutions for a modern world</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="glass service-card reveal">
+        <span class="card-icon">💻</span>
+        <h3>WEB DEVELOPMENT</h3>
+        <p>Modern responsive websites and digital platforms.</p>
+      </div>
+      <div class="glass service-card reveal">
+        <span class="card-icon">🛠️</span>
+        <h3>TECH SOLUTIONS</h3>
+        <p>Useful technology tools and digital problem solving.</p>
+      </div>
+      <div class="glass service-card reveal">
+        <span class="card-icon">🎨</span>
+        <h3>DIGITAL DESIGN</h3>
+        <p>Creative visual identities and digital experiences.</p>
+      </div>
+      <div class="glass service-card reveal">
+        <span class="card-icon">🌐</span>
+        <h3>NETWORK TOOLS</h3>
+        <p>Internet testing and network-related utilities.</p>
+      </div>
+      <div class="glass service-card reveal">
+        <span class="card-icon">📱</span>
+        <h3>TECH CONTENT</h3>
+        <p>Technology information, tips and digital updates.</p>
+      </div>
+      <div class="glass service-card reveal">
+        <span class="card-icon">🚀</span>
+        <h3>DIGITAL PROJECTS</h3>
+        <p>Building new ideas into practical online tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>03 // OUR WORK</small>
+      <h2>FEATURED <span>PROJECTS</span></h2>
+      <p>Explore our digital platforms</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="glass project-card reveal">
+        <span class="card-icon">🔐</span>
+        <span class="project-tag">SECURITY & UTILITY</span>
+        <h3>YTS QR & PASSWORD STUDIO</h3>
+        <p>Generate QR codes and create passwords with a simple digital interface.</p>
+        <a class="project-link" href="https://pasword-qr-generator.vercel.app" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+      </div>
+
+      <div class="glass project-card reveal">
+        <span class="card-icon">📡</span>
+        <span class="project-tag">NETWORK TOOL</span>
+        <h3>YTS INTERNET SPEED TEST</h3>
+        <p>Test your internet connection speed using our online tool.</p>
+        <a class="project-link" href="https://net-scanner-one.vercel.app" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+      </div>
+
+      <div class="glass project-card reveal">
+        <span class="card-icon">🎬</span>
+        <span class="project-tag">ENTERTAINMENT</span>
+        <h3>YTS MAX</h3>
+        <p>Explore movie trailers, movie details and live TV channels.</p>
+        <a class="project-link" href="https://yts-max.vercel.app" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+      </div>
+
+      <div class="glass project-card reveal">
+        <span class="card-icon">⚙️</span>
+        <span class="project-tag">SUPPORT TOOL</span>
+        <h3>YTS UNBAN TOOL</h3>
+        <p>An account support information and assistance platform.</p>
+        <a class="project-link" href="https://unban-tool-five.vercel.app" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+      </div>
+
+      <div class="glass project-card reveal">
+        <span class="card-icon">🚧</span>
+        <span class="project-tag">COMING SOON</span>
+        <h3>UPCOMING PROJECTS</h3>
+        <p>New digital tools and technology projects are in development.</p>
+        <span class="project-link">STAY TUNED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>04 // CAPABILITIES</small>
+      <h2>TECH <span>SKILLS</span></h2>
+      <p>Areas of technology and creativity</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="glass skill-card reveal">
+        <h3>HTML & CSS</h3>
+        <p style="color:var(--muted);font-size:11px">Web interface development</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <h3>JAVASCRIPT</h3>
+        <p style="color:var(--muted);font-size:11px">Interactive web features</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <h3>WEB DESIGN</h3>
+        <p style="color:var(--muted);font-size:11px">Creative user interfaces</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <h3>TECH SUPPORT</h3>
+        <p style="color:var(--muted);font-size:11px">Digital assistance</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <h3>NETWORKING</h3>
+        <p style="color:var(--muted);font-size:11px">Network tools and concepts</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="glass skill-card reveal">
+        <h3>CREATIVE DESIGN</h3>
+        <p style="color:var(--muted);font-size:11px">Visual content creation</p>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="owner">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>05 // THE CREATOR</small>
+      <h2>OWNER & <span>DEVELOPER</span></h2>
+    </div>
+
+    <div class="glass owner-card reveal">
+      <img src="https://files.catbox.moe/m6er0p.jpg" alt="Owner and Developer">
+      <h3>YASSER TECH</h3>
+      <p>Founder & Developer</p>
+      <p>
+        Behind Yasser Tech Solutions is a passion for technology,
+        creativity and building useful digital experiences.
+      </p>
+      <a href="#contact" class="primary-btn">GET IN TOUCH ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>06 // CONNECT WITH US</small>
+      <h2>CONTACT <span>YTS</span></h2>
+      <p>Let's connect and explore new digital ideas</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="glass contact-item reveal">
+        <span class="card-icon">📱</span>
+        <h3>WHATSAPP</h3>
+        <p>Talk to us directly</p>
+        <a href="https://wa.me/255790216244" target="_blank" rel="noopener">+255 790 216 244 ↗</a>
+      </div>
+
+      <div class="glass contact-item reveal">
+        <span class="card-icon">✈️</span>
+        <h3>TELEGRAM</h3>
+        <p>Connect on Telegram</p>
+        <a href="https://t.me/yasser_0100" target="_blank" rel="noopener">OPEN TELEGRAM ↗</a>
+      </div>
+
+      <div class="glass contact-item reveal">
+        <span class="card-icon">📢</span>
+        <h3>WHATSAPP CHANNEL</h3>
+        <p>Follow for updates</p>
+        <a href="https://whatsapp.com/channel/0029VbD1QcaGk1FkH9XpvD3X" target="_blank" rel="noopener">FOLLOW CHANNEL ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <h3>YASSER TECH SOLUTIONS</h3>
+  <p>TECHNOLOGY • INNOVATION • DIGITAL SOLUTIONS</p>
+  <p>© <span id="year"></span> Yasser Tech Solutions. All Rights Reserved.</p>
+  <p>DESIGNED WITH 💙 BY YTS</p>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const loader = document.getElementById("loader");
+const welcome = document.getElementById("welcome");
+
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    loader.style.opacity="0";
+    setTimeout(()=>{
+      loader.style.display="none";
+      if(!sessionStorage.getItem("yts_entered")){
+        welcome.style.display="flex";
+      }
+    },700);
+  },1000);
+});
+
+function enterSite(){
+  welcome.style.opacity="0";
+  welcome.style.transition=".5s";
+  sessionStorage.setItem("yts_entered","yes");
+  setTimeout(()=>welcome.style.display="none",500);
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+// Tanzania live clock
+function updateClock(){
+  const now=new Date();
+  document.getElementById("clock").textContent=
+    new Intl.DateTimeFormat("en-GB",{
+      timeZone:"Africa/Dar_es_Salaam",
+      hour:"2-digit",minute:"2-digit",second:"2-digit",
+      hour12:false
+    }).format(now);
+
+  document.getElementById("date").textContent=
+    new Intl.DateTimeFormat("en-GB",{
+      timeZone:"Africa/Dar_es_Salaam",
+      weekday:"long",day:"numeric",month:"long",year:"numeric"
+    }).format(now);
+}
+updateClock();
+setInterval(updateClock,1000);
+
+document.getElementById("year").textContent=
+  new Date().getFullYear();
+
+// Reveal animation
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+// Active quick navigation
+const sections=document.querySelectorAll("main section");
+const quickLinks=document.querySelectorAll(".quick-nav a");
+
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      quickLinks.forEach(link=>{
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href")==="#"+entry.target.id
+        );
+      });
+    }
+  });
+},{rootMargin:"-25% 0px -60% 0px"});
+
+sections.forEach(section=>sectionObserver.observe(section));
+
+// Back to top
+window.addEventListener("scroll",()=>{
+  document.getElementById("backTop").classList.toggle(
+    "show",window.scrollY>400
+  );
+});
+</script>
+
+</body>
+</html>
